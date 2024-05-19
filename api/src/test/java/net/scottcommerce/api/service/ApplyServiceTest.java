@@ -4,6 +4,7 @@ import net.scottcommerce.api.repository.CouponRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -30,12 +31,12 @@ class ApplyServiceTest {
     }
 
     @Test
-    public void 여러명응() throws InterruptedException {
+    public void 여러명용() throws InterruptedException {
         int threadCount = 1000;
         ExecutorService executorService = Executors.newFixedThreadPool(32);
         CountDownLatch latch = new CountDownLatch(threadCount);
 
-        for(int i = 0; i< threadCount; i++){
+        for(int i = 0; i < threadCount; i++){
             long userId = i;
             executorService.submit(() -> {
 
