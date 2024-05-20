@@ -1,5 +1,6 @@
 package net.scottcommerce.api.service;
 
+import jakarta.transaction.Transactional;
 import net.scottcommerce.api.domain.Coupon;
 import net.scottcommerce.api.repository.CouponCountRepository;
 import net.scottcommerce.api.repository.CouponRepository;
@@ -16,15 +17,14 @@ public class ApplyService {
         this.couponRepository = couponRepository;
         this.couponCountRepository = couponCountRepository;
     }
-
-    public void apply(Long userId){
+    public void apply(Long userId) {
         Long count = couponCountRepository.increment();
 
-        if(count > 100){
+        if (count > 100) {
             return;
         }
 
-        couponRepository.save(new Coupon(userId));
+       couponRepository.save(new Coupon(userId));
 
     }
 }
